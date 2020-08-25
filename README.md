@@ -7,4 +7,4 @@ Python is a high-level, interpreted and general-purpose dynamic programming lang
 
 ##### Note
 
-> This repository consists of fun projects I make in my journey to learning
+> This repository consists of fun projects I make in my journey of learning with python
