@@ -29,6 +29,8 @@ class CreateUser(graphene.Mutation):
     user = graphene.Field(User)
 
     def mutate(self, info, username):
+        if info.context.get('is_vip'):
+            username = username.upper()
         user = User(username=username)
         return CreateUser(user=user)
 
@@ -52,7 +54,7 @@ results = schema.execute(
         }
         ''',
         variable_values = {'username': 'Alice'},
-        
+        context = {'is_vip': True}
 )
 
 items = dict(results.data.items())
