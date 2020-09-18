@@ -51,7 +51,8 @@ results = schema.execute(
             }
         }
         ''',
-        variable_values = {'username': 'Alice'}
+        variable_values = {'username': 'Alice'},
+        
 )
 
 items = dict(results.data.items())
