@@ -39,3 +39,19 @@ else:
     print("no")
 
 print("\n")
+
+# get the number of elements in a tuple
+print(len(a))
+
+# count ocurance 
+b = ('h', 'e', 'l', 'low','o','r','l','d')
+print(b.count('l'))
+
+# return the index of 
+print(b.index('o'))
+
+# convert a tuple to a list and back
+my_list = list(b)
+my_tuple_b = tuple(my_list)
+print(my_list)
+print(my_tuple_b)
