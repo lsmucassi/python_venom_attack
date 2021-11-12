@@ -1,4 +1,4 @@
- from functools import reduce
+from functools import reduce
 from datetime import timedelta
 import datetime
 import time
@@ -12,6 +12,45 @@ def deep_get(dictionary, keys, default=None):
         keys.split("."), 
         dictionary
     )
+ def get_mandates(file):
+    date_fmt = '%m/%d/%Y, %H:%M:%S'
+    pending = []
+    with open(file, 'r') as f:
+        data = f.read().splitlines()
+    
+    for i, d in enumerate(data):
+         data[i] = ast.literal_eval(d)
+
+    # get pending mandates older than 24HR
+    for mandate in data:
+        '''
+            [2] - year
+            [0] - Month
+            [1] - Day
+        '''
+        now = datetime.datetime.now()
+        man_time = mandate['timestamp'][:]
+        today_time = now.strftime(date_fmt)
+        man_dtime = datetime.datetime.strptime(man_time, date_fmt)
+        today_dtime = datetime.datetime.strptime(today_time, date_fmt)
+
+        if man_dtime > today_dtime:
+            time_diff = man_dtime - today_dtime
+        else:
+            time_diff = today_dtime - man_dtime
+        # time_diff_mins = int(round(time_diff.total_seconds() / 60))
+        if time_diff.days >= 1:
+            pending.append(mandate)
+            print("\n==============================================================================")
+            print(man_time)
+            print(today_time)
+            print(f'Total days {time_diff.days}')
+            print(f'Total hours {time_diff / datetime.timedelta(hours=1)}')
+            print(f'The difference is approx. {time_diff}')
+            print("==============================================================================")
+        
+    print(f"\nTOTAL NUMBER OF OVERDUE MANDATES: {len(pending)}\n")
+    return pending
 
 man_date = (mandate['timestamp'][:10]).split('/')
 man_date = [int(integer) for integer in man_date]
