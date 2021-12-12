@@ -24,7 +24,6 @@ def filter_reservations(data):
         for event in data:
             if event['paid'] == False:
                 unpaid.append(event)
-    
     return unpaid
 
 
@@ -39,7 +38,7 @@ def run_app():
 
     # check if user paid reservation
     '''
-    we know that the data share _id
+    we know that the data share '_id'
     '''
     if paid_data and unpaid_data:
         for i, event in enumerate(unpaid_data):
@@ -50,15 +49,8 @@ def run_app():
                     unpaid_data[i]['paid'] = True
             # else check if date is overdue for payment
             else:
+                print("\n", unpaid_data[i])
 
-
-                    print("\n", unpaid_data[i])
-
-        
-
-        
-
-        
 
         
 
