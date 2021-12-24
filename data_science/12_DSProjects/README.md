@@ -5,4 +5,5 @@
 - Streamlit-
 
 TODO:
-- [ ] : Simple Stock Price
+- [x] : Simple Stock Price
+- [ ] : BioInformatics DNA Count
