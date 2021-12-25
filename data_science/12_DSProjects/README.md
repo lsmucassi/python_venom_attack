@@ -6,4 +6,6 @@
 
 TODO:
 - [x] : Simple Stock Price
-- [ ] : BioInformatics DNA Count
+- [X] : BioInformatics DNA Count
+- [ ] : EDA Basketball Data
+- [X] : 
